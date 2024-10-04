@@ -12,7 +12,7 @@ interface NoteDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(note: Note)
 
-    @Query("SELECT * FROM  note") // Ensure this table name matches your actual table
+    @Query("SELECT * FROM note ORDER BY timestamp DESC") // Ensure table name matches entity
     fun getAllNotes(): Flow<List<Note>>
 
     @Query("SELECT * FROM note WHERE id = :noteId LIMIT 1")

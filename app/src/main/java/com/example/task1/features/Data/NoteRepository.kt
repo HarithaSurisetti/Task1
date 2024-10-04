@@ -14,9 +14,7 @@ class NoteRepository @Inject constructor(private val noteDao: NoteDao) : NoteRep
 
     override fun getAllNotes(): Flow<List<Note>> {
         return noteDao.getAllNotes()
-            .onEach { notes ->
-                Log.d("NoteRepository", "Fetched Notes: ${notes.size}")
-            }
+
     }
 
     override suspend fun getNoteById(id: Int): Note? {

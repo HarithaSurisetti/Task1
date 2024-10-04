@@ -1,7 +1,7 @@
 package com.example.task1.di
 
+
 import android.app.Application
-import androidx.room.Room
 import com.example.task1.features.Data.NoteDao
 import com.example.task1.features.Data.NoteDatabase
 import com.example.task1.features.Data.NoteRepository
@@ -30,6 +30,12 @@ object AppModule {
     fun provideNoteRepository(dao: NoteDao): NoteRepository {
         return NoteRepository(dao)
     }
+
+    @Provides
+    fun provideNoteDao(database: NoteDatabase): NoteDao {
+        return database.noteDao()
+    }
+
 
     @Provides
     @Singleton
